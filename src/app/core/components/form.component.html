@@ -1,0 +1,27 @@
+<form [formGroup]="form$ | async" (ngSubmit)="eventSubmit()" novalidate>
+  <div class="it-form">
+    <fieldset>
+      <ng-content></ng-content>
+    </fieldset>
+  </div>
+
+  <div class=" forms well-custom">
+  
+
+    <button type="button" [disabled]="(form$ | async).invalid"
+            class="btn btn-danger" (click)="pop_up.showPopup(true)"
+            *ngIf="(modo$ | async)===3">
+      <i class="fa fa-trash font-size-icons"></i>&nbsp;EXCLUIR
+    </button>
+
+    <button
+            class="btn btn-success"
+      <i class="fa fa-check-circle font-size-icons"></i>&nbsp;&nbsp;{{titleSubmit}}
+    </button>
+
+    <button type="button" class="btn btn-warning" (click)="eventCancel()"           
+      <i class="fa fa-undo font-size-icons"></i>&nbsp;&nbsp;CANCELAR
+    </button>
+  </div>
+
+</form>
