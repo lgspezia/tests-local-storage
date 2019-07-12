@@ -10,6 +10,10 @@ import { AuthService } from './auth.service'
 import { UserService } from './user.service'
 import { AuthGuard } from './auth.guard';
 import { LogoutComponent } from './logout/logout.component'
+import { AutenticacaoService } from './core/services/autenticacao.service';
+import { ContextoService } from './core/services/contexto.service';
+import { HttpService } from './core/services/http.service';
+import { Http, ConnectionBackend } from '@angular/http';
 
 
 const appRoutes: Routes = [
@@ -41,6 +45,7 @@ const appRoutes: Routes = [
     AdminComponent,
     HomeComponent,
     LogoutComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,8 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [AuthService, UserService, AuthGuard],
+  providers: [AuthService, AutenticacaoService, AuthGuard, ContextoService,
+     HttpService, UserService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

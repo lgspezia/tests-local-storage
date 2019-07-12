@@ -3,7 +3,7 @@ import { FormGroup } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 
 import { BehaviorSubject } from "rxjs";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 
 import { Subject } from "rxjs";
 import { Subscription } from "rxjs";
@@ -43,11 +43,11 @@ export class FormComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(protected activatedRoute: ActivatedRoute) {
-    this.cancelVisible$ = Observable.of(true);
+    // this.cancelVisible$ = Observable.of(true);
     this.modo$ = new BehaviorSubject(undefined);
     this.onCancel = new EventEmitter();
     this.titleSubmit = "GRAVAR";
-    this.mensagemExclusao$ = Observable.of(`Confirma a exclusão do registro?`);
+    // this.mensagemExclusao$ = Observable.of(`Confirma a exclusão do registro?`);
   }
 
   /**
@@ -61,10 +61,10 @@ export class FormComponent implements OnInit, OnDestroy {
    * Captura os modos de visualizacao e exclusao desabilitando todos os campos - utilizado para informar ao usuário.
    */
   public ngOnInit(): void {
-    this.subscription = this.modo$
-      .filter((modo: number) => modo === Modo.READ || modo === Modo.DELETE)
-      .switchMap(() => this.form$)
-      .subscribe((form: FormGroup) => Object.keys(form.controls).forEach((key: any) => form.get(key).disable()));
+    // this.subscription = this.modo$
+    //   .filter((modo: number) => modo === Modo.READ || modo === Modo.DELETE)
+    //   .switchMap(() => this.form$)
+    //   .subscribe((form: FormGroup) => Object.keys(form.controls).forEach((key: any) => form.get(key).disable()));
 
   }
 

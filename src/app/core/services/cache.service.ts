@@ -36,15 +36,15 @@ export class CacheService {
     }
     return this.getItem(idchave)
     // Busca o valor do cache e verifica se está expirado
-      .map((valor: ICache) => {
-        if (valor) { // se o cache expirou considera o valor como null
-          if (DateUtil.now().getTime() > valor.expiraEm) { // valor válido no cache
-            this.removeItem(idchave);
-            return null;
-          }
-        }
-        return valor;
-      })
+      // .map((valor: ICache) => {
+      //   if (valor) { // se o cache expirou considera o valor como null
+      //     if (DateUtil.now().getTime() > valor.expiraEm) { // valor válido no cache
+      //       this.removeItem(idchave);
+      //       return null;
+      //     }
+      //   }
+      //   return valor;
+      // })
       
   }
 

@@ -28,7 +28,7 @@ export class UserService {
 
   setSomeData(username: string, pass: string) {
     //return this.http.get<myData>('/api/database.php')
-    this.http. get<myData>();
+    // this.http. get<myData>();
     const itemPost = localStorage.setItem("username", JSON.stringify(username));
     this.http.post<myData>("username", itemPost);
   }

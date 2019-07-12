@@ -1,7 +1,7 @@
 import { Input, OnDestroy } from "@angular/core";
 import { AbstractControl, FormGroup } from "@angular/forms";
 import { BehaviorSubject, Subscription } from "rxjs";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 
 import { ServerError } from "../model/server-error";
 import { Modo } from "../model/modo.enum";
@@ -46,18 +46,18 @@ export class BaseFormComponent implements OnDestroy {
    * * @param value
    * @param control:? string
    */
-  public setValue(value: any, control: string = this.control): void {
-    this.addSubscription(this.getControl(control).subscribe((ac) => ac.setValue(value)));
-  }
+  // public setValue(value: any, control: string = this.control): void {
+  //   this.addSubscription(this.getControl(control).subscribe((ac) => ac.setValue(value)));
+  // }
 
   /**
    * Retorna um observable de valor do componente.
    * @param control:? string
    * @return {Observable<any>}
    */
-  public getValue(control: string = this.control): Observable<any> {
-    return this.getControl(control).map((ac: AbstractControl) => ac.value);
-  }
+  // public getValue(control: string = this.control): Observable<any> {
+  //   return this.getControl(control).map((ac: AbstractControl) => ac.value);
+  // }
 
   /**
    * Retorna o Observable do component.
@@ -80,15 +80,16 @@ export class BaseFormComponent implements OnDestroy {
    * Mapeia o control desejado, validando se existe.
    * @param control:? string
    */
-  public getControl(control: string = this.control, form$: BehaviorSubject<FormGroup> = this.form$): Observable<any> {
+  // public getControl(control: string = this.control, form$: BehaviorSubject<FormGroup> = this.form$): Observable<FormGroup> {
+    public getControl(control: string = this.control, form$: BehaviorSubject<FormGroup> = this.form$): void {
 
-    return form$.map((fg: FormGroup) => {
-      const abControl = fg.get(control);
-      if (!abControl) {
-        throw new Error("Campo não existe: " + control);
-      }
-      return abControl;
-    });
+    // return form$.map((fg: FormGroup) => {
+    //   const abControl = fg.get(control);
+    //   if (!abControl) {
+    //     throw new Error("Campo não existe: " + control);
+    //   }
+    //   return abControl;
+    // });
 
     //return Observable.of(this.control); //
   }

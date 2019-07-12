@@ -11,10 +11,10 @@ import {
 import { DomSanitizer } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 
-import "rxjs/add/observable/throw";
-import "rxjs/add/operator/catch";
-import "rxjs/add/operator/map";
-import { Observable } from "rxjs/Observable";
+// import "rxjs/add/observable/throw";
+// import "rxjs/add/operator/catch";
+// import "rxjs/add/operator/map";
+import { Observable } from "rxjs";
 
 import { CacheService } from "./cache.service";
 import { AppSettings } from "../../app.settings";
@@ -24,6 +24,7 @@ import { ServerError } from "../model/server-error";
 export class HttpService {
 
   protected headers: Headers;
+  private whathever$: Observable<any>;
 
   private static json(response: Response): any {
     return response.arrayBuffer().byteLength > 0 || response.text() === "" ? response : response.json();
@@ -39,19 +40,20 @@ export class HttpService {
    * GET
    */
   public get(url: string, args?: RequestOptionsArgs): Observable<any> {
-    return this.http.get(`${AppSettings.API_ENDPOINT}${url}`, args)
-      .map((response: Response) => response.json())
-      .catch((error) => this.handleError(error, this.router))
-
+    // return this.http.get(`${AppSettings.API_ENDPOINT}${url}`, args)
+    //   .map((response: Response) => response.json())
+    //   .catch((error) => this.handleError(error, this.router))
+return this.whathever$;
   }
 
   /**
    * GET com funcionalidade de cache
    */
   public getCache(url: string, args?: RequestOptionsArgs): Observable<any> {
-    const http$: Observable<any> = this.http.get(`${AppSettings.API_ENDPOINT}${url}`, args)
-      .map((response: Response) => response.json())
-      .catch((error) => this.handleError(error, this.router));
+    let http$: Observable<any>;
+    // const http$: Observable<any> = this.http.get(`${AppSettings.API_ENDPOINT}${url}`, args)
+    //   .map((response: Response) => response.json())
+    //   .catch((error) => this.handleError(error, this.router));
 
     if (args) {
       (<URLSearchParams> args.search)
@@ -66,18 +68,23 @@ export class HttpService {
    * Busca o objeto por id.
    */
   public getById(url: string, id: number): Observable<any> {
-    return this.http.get(`${AppSettings.API_ENDPOINT}${url}/${id}`)
-      .map((response: Response) => response.json())
-      .catch((error) => this.handleError(error, this.router));
+    
+    // return this.http.get(`${AppSettings.API_ENDPOINT}${url}/${id}`)
+    //   .map((response: Response) => response.json())
+    //   .catch((error) => this.handleError(error, this.router));
+    let http$: Observable<any>;
+    return http$;
   }
 
   /**
    * Busca o objeto por codigo.
    */
   public getByCode(url: string, code: string): Observable<any> {
-    return this.http.get(`${AppSettings.API_ENDPOINT}${url}/code/${code}`)
-      .map((response: Response) => response.json())
-      .catch((error) => this.handleError(error, this.router));
+    // return this.http.get(`${AppSettings.API_ENDPOINT}${url}/code/${code}`)
+    //   .map((response: Response) => response.json())
+    //   .catch((error) => this.handleError(error, this.router));
+    let http$: Observable<any>;
+    return http$;
   }
 
   /**
@@ -90,9 +97,11 @@ export class HttpService {
     if (args.headers === undefined) {
       args.headers = this.headers;
     }
-    return this.http.post(`${AppSettings.API_ENDPOINT}${url}`, JSON.stringify(data), args)
-      .map((response: Response) => response.json())
-      .catch((error) => this.handleError(error, this.router));
+    // return this.http.post(`${AppSettings.API_ENDPOINT}${url}`, JSON.stringify(data), args)
+    //   .map((response: Response) => response.json())
+    //   .catch((error) => this.handleError(error, this.router));
+    let http$: Observable<any>;
+    return http$;
   }
 
   
@@ -106,9 +115,11 @@ export class HttpService {
     if (args.headers === undefined) {
       args.headers = this.headers;
     }
-    return this.http.put(`${AppSettings.API_ENDPOINT}${url}`, JSON.stringify(data), args)
-      .map((response: Response) => HttpService.json(response))
-      .catch((error) => this.handleError(error, this.router));
+    // return this.http.put(`${AppSettings.API_ENDPOINT}${url}`, JSON.stringify(data), args)
+    //   .map((response: Response) => HttpService.json(response))
+    //   .catch((error) => this.handleError(error, this.router));
+    let http$: Observable<any>;
+    return http$;
   }
 
   public delete(url: string, id: number, args?: RequestOptionsArgs): Observable<any> {
@@ -118,9 +129,11 @@ export class HttpService {
     if (args.headers === undefined) {
       args.headers = this.headers;
     }
-    return this.http.delete(`${AppSettings.API_ENDPOINT}${url}/${id}`, args)
-      .map((response: Response) => HttpService.json(response))
-      .catch((error) => this.handleError(error, this.router));
+    // return this.http.delete(`${AppSettings.API_ENDPOINT}${url}/${id}`, args)
+    //   .map((response: Response) => HttpService.json(response))
+    //   .catch((error) => this.handleError(error, this.router));
+    let http$: Observable<any>;
+    return http$;
   }
 
   public redirect() {
