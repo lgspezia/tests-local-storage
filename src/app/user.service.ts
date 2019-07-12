@@ -19,7 +19,7 @@ interface logoutStatus {
 export class UserService {
 
 
-  constructor(private http: HttpClient, private logStatus: AutenticacaoService) { }
+  constructor(private http: HttpClient) { }
 
   getSomeData() {
     //return this.http.get<myData>('/api/database.php')
@@ -44,8 +44,12 @@ export class UserService {
   /**
    * Recupera os dados do localstorage.
    */
-  public get userData() {
-    return this.logStatus.usuario();
+  // public get userData() {
+  //   return this.logStatus.usuario();
+  // }
+
+  public getUserData( logStatus: AutenticacaoService) {
+    return logStatus.usuario();
   }
 
 

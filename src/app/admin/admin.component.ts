@@ -10,12 +10,13 @@ export class AdminComponent implements OnInit {
 
   message = "Loading...."
 
-  constructor(private user: UserService) { }
+  // constructor(private user: UserService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.user.getSomeData().subscribe(data => {
-      this.message = data.message
-    })
+    // this.user.getSomeData().subscribe(data => {
+    //   this.message = data.message
+    // })
   }
 
 }

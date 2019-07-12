@@ -13,8 +13,9 @@ interface myData {
 export class AuthService {
 
   private loggedInStatus = false
+  // private logStatus: AutenticacaoService;
 
-  constructor(private http: HttpClient, private logStatus: AutenticacaoService) { }
+  constructor(private http: HttpClient) { }
   
 
   setLoggedIn(value: boolean) {
@@ -27,29 +28,29 @@ export class AuthService {
 
   getUserDetails(username, password) {
     // post these details to API server return user info if correct
-    return this.http.post<myData>('../../test/api/auth.php', {
+    return this.http.post<myData>('/api/auth.php', {
       username,
       password
     })
   }
 
   public userDetail(username, password) {
-    this.logStatus.login(username, password);
+    // this.logStatus.login(username, password);
   }
 
   /**
    * Recupera os dados do localstorage.
    */
-  public get userDetails() {
-    return this.logStatus.usuario();
-  }
+  // public get userDetails() {
+  //   return this.logStatus.usuario();
+  // }
 
   /**
    * Grava dados usuario no localstorage.
    * @param resp
    */
   public set userDetails(resp: any) {
-    this.logStatus.usuario(resp);
+    // this.logStatus.usuario(resp);
     
   }
 
